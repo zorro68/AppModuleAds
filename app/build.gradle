@@ -1,0 +1,77 @@
+plugins {
+    id 'com.android.application'
+}
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.example.andmoduleads"
+        minSdkVersion 24
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    signingConfigs {
+        release {
+            storeFile file("key/release.jks")
+            storePassword "trustedapp@123"
+            keyAlias "key0"
+            keyPassword "trustedapp@123"
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation project(path: ':ads')
+    implementation 'com.google.android.gms:play-services-ads:20.4.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    implementation "androidx.core:core-ktx:1.6.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation 'com.applovin:applovin-sdk:11.4.2'
+
+//    implementation 'com.applovin.mediation:adcolony-adapter:+'
+    implementation 'com.applovin.mediation:google-adapter:20.4.0.0'
+//    implementation 'com.applovin.mediation:ironsource-adapter:+'
+//    implementation 'com.applovin.mediation:mintegral-adapter:+'
+//    implementation 'com.applovin.mediation:bytedance-adapter:+'
+//    implementation 'com.applovin.mediation:unityads-adapter:+'
+//    implementation 'com.applovin.mediation:vungle-adapter:+'
+//
+//    implementation 'com.mbridge.msdk.oversea:reward:16.0.31'
+//    implementation 'com.mbridge.msdk.oversea:newinterstitial:16.0.31'
+//    implementation 'com.mbridge.msdk.oversea:mbbanner:16.0.31'
+//    implementation 'com.mbridge.msdk.oversea:mbsplash:16.0.31'
+//    implementation 'com.mbridge.msdk.oversea:mbnative:16.0.31'
+//// for using bidding
+//    implementation 'com.mbridge.msdk.oversea:mbbid:16.0.31'
+//    implementation 'com.pangle.global:ads-sdk:4.1.1.2'
+//
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
+}
+repositories {
+    mavenCentral()
+}
